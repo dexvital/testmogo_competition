@@ -1,15 +1,6 @@
 # testmogo_competition
 Competition result view
-
-test work for Mogo Finance
-
-Sveiks,
-
- 
-
-Kā vienojāmies telefon saruna, lai precīzāk novērtētu tavas PHP zināšanas, lūgums izpildīt šo uzdevumu:
-
- 
+test work
 
 Sagatavot un aizpildīt turnīra grafiku (tabulu), kur komandas tiek sadalītas divās divīzijās A un B. Katrā divīzijā komandas izspēlē katra ar katru, kur gala rezultātā 4 labākās komandas, no katras divīzijas, nonāk izslēgšanas spēlēs. Izslēgšanas spēles grafiks ir pēc “egles” principa, (labākā komanda spēlē pret vājāko komandu), kur vinnētājs iet tālāk, bet zaudētājs izkrīt no turpmākās dalības. Rezultātā vinnētāja komanda ir tā, kas uzvar visas spēles izslēgšanas grafikā.
 
