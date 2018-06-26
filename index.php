@@ -10,8 +10,20 @@ spl_autoload_register(function($c) {
 //////////////////////////////////////////////////////////////////////////////////////
 
 use classes\Competition;
+use classes\Group;
+use classes\Team;
 
 $competition = new Competition();
 
+for ($i = 1; $i <= Competition::CROUPS_CNT; $i++) {
+    $competition->addGroup(new Group());
+}
 
- 
+for ($i = 1; $i <= 8; $i++) {
+    $competition->addTeamToGroup(new Team($i));
+}
+
+$competition->run();
+
+
+
