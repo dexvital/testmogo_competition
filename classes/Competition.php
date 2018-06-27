@@ -4,9 +4,8 @@ namespace classes;
 
 use interfaces\GroupInterface;
 use interfaces\TeamInterface;
-use classes\Result;
 
-class Competition extends Result
+class Competition
 {
     const GROUPS_CNT = 2;
     const GROUP_WINNERS = 4;
