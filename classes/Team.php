@@ -9,14 +9,14 @@ class Team implements TeamInterface
     private $number = 0;
 
     /**
-     * Player constructor.
+     * Team constructor.
      */
     public function __construct($number)
     {
         $this->number = $number;
     }
 
-    public function getNumber()
+    public function getNumber() :int
     {
         return $this->number;
     }

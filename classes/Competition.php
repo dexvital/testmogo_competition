@@ -3,13 +3,18 @@
 namespace classes;
 
 use interfaces\GroupInterface;
+use interfaces\TeamInterface;
+use classes\Result;
 
-class Competition
+class Competition extends Result
 {
-    const CROUPS_CNT = 2;
+    const GROUPS_CNT = 2;
+    const GROUP_WINNERS = 4;
 
     private $groups = [];
+    private $finalGroup;
 
+    use Fight;
     /**
      * Competition constructor.
      */
@@ -18,26 +23,65 @@ class Competition
 
     }
 
-    public function addGroup(\interfaces\GroupInterface $group)
+    public function addGroup(GroupInterface $group) :void
     {
         $this->groups[] = $group;
     }
 
-    public function addTeamToGroup(\interfaces\TeamInterface $team)
+    /**
+     * @param GroupInterface $group
+     */
+    public function addFinalGroup(GroupInterface $group) :void
+    {
+        $this->finalGroup = $group;
+    }
+
+    /**
+     * @param TeamInterface $team
+     */
+    public function addTeamToGroup(TeamInterface $team) :void
     {
         static $teamCount = 0;
         $teamCount++;
 
-        $key = $teamCount % self::CROUPS_CNT;
+        $key = $teamCount % self::GROUPS_CNT;
         if (!isset($this->groups[$key]) || !($this->groups[$key] instanceof GroupInterface)) {
             $key = 0;
         }
         $this->groups[$key]->addTeam($team);
     }
 
-    public function run()
+    /**
+     *
+     */
+    public function run() :void
     {
-        var_dump($this->groups);
+        array_map(function($group) {$group->groupFight();}, $this->groups);
+
+        $this->fillFinalGroup();
+        $this->finalGroup->groupFight();
+    }
+
+    /**
+     * @return array
+     */
+    public function getWinners() :array
+    {
+        return $this->finalGroup->getWinners();
+    }
+
+    /**
+     *
+     */
+    private function fillFinalGroup() :void
+    {
+        foreach ($this->groups as $group) {
+            $winners = $group->getWinners(self::GROUP_WINNERS);
+
+            foreach($winners as $team) {
+                $this->finalGroup->addTeam($team);
+            }
+        }
     }
 
 
