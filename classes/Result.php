@@ -4,6 +4,7 @@ namespace classes;
 
 use classes\Services;
 use interfaces\TeamInterface;
+use Entity\Result as EResult;
 
 abstract class Result
 {
@@ -12,9 +13,14 @@ abstract class Result
 
     protected function saveResult(\interfaces\TeamInterface $loser, \interfaces\TeamInterface $winner)
     {
-        $mysql = Services::mysql();
-
         $this->results[$winner->getNumber()]++;
 
+        $em = Services::entityManager();
+        $result = new EResult();
+        $result->setLoser($loser->getEntety());
+        $result->setWinner($winner->getEntety());
+
+        $em->persist($result);
+        $em->flush();
     }
 }

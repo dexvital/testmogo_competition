@@ -2,12 +2,11 @@
 
 namespace classes;
 
-use classes\Mysql;
-
 class Services
 {
-    public static function mysql()
+    public static function entityManager()
     {
-        return Mysql::getInstance();
+        global $entityManager;
+        return $entityManager;
     }
 }
