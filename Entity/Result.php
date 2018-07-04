@@ -2,8 +2,6 @@
 
 namespace Entity;
 
-use Doctrine\Mapping as ORM;
-
 /**
  * Result
  *

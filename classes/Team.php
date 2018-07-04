@@ -23,7 +23,10 @@ class Team implements TeamInterface
         $this->checkDB();
     }
 
-    private function checkDB()
+    /**
+     * Check if team is in db, if not save's to db
+     */
+    private function checkDB() :void
     {
         $em = Services::entityManager();
         $this->team = $em->getRepository('Entity\Team')->find($this->number);
@@ -36,11 +39,17 @@ class Team implements TeamInterface
         }
     }
 
-    public function getEntety()
+    /**
+     * @return \Entity\Team
+     */
+    public function getEntety() :\Entity\Team
     {
         return $this->team;
     }
 
+    /**
+     * @return int
+     */
     public function getNumber() :int
     {
         return $this->number;

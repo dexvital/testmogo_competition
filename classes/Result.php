@@ -11,7 +11,11 @@ abstract class Result
     protected $results = [];
     protected $fullResults = [];
 
-    protected function saveResult(\interfaces\TeamInterface $loser, \interfaces\TeamInterface $winner)
+    /**
+     * @param TeamInterface $loser
+     * @param TeamInterface $winner
+     */
+    protected function saveResult(TeamInterface $loser, TeamInterface $winner) :void
     {
         $this->results[$winner->getNumber()]++;
 
@@ -20,7 +24,11 @@ abstract class Result
         $result->setLoser($loser->getEntety());
         $result->setWinner($winner->getEntety());
 
-        $em->persist($result);
-        $em->flush();
+        try {
+            $em->persist($result);
+            $em->flush();
+        } catch (\Exception $e) {
+
+        }
     }
 }

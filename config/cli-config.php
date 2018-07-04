@@ -17,7 +17,7 @@ $isDevMode = false;
 $dbParams = [
     'driver'   => 'pdo_mysql',
     'user'     => 'root',
-    'password' => 'root_pas_K!17',
+    'password' => 'changeme',
     'dbname'   => 'mogo_test',
     'host'     => 'localhost',
 

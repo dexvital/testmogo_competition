@@ -29,7 +29,7 @@ class Group extends Result implements GroupInterface
     }
 
     /**
-     *
+     * Group fight, all with all
      */
     public function groupFight() :void
     {

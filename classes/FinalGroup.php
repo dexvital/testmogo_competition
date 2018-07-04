@@ -28,7 +28,7 @@ class FinalGroup extends Result implements GroupInterface
     }
 
     /**
-     *
+     * group fights, 1/4, 1/2 and final
      */
     public function groupFight() :void
     {
